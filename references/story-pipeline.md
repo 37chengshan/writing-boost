@@ -1,74 +1,121 @@
-# 故事工业化流水线标准（从立项到成稿终审）
+# 六阶段写作管线
 
-> 来源沉淀：`oh-story-claudecode` 故事工业化体系 ＋ 知音 Travel 全量叙事 DNA（特别融合 2026 最新全量样本）  
-> 适用场景：长篇纪实特稿、短篇真实故事、文旅散文、人物专访、社会公共议题报道
+> 前置条件：已经完成《开稿对齐卡》和字数锁。Explore 是可选探索，不计入六阶段。
 
----
+## Artifact Lifecycle
 
-## 六阶段流水线标准全景
+| Stage | 主要输入 | 稳定输出 / checkpoint artifact |
+| :--- | :--- | :--- |
+| 1 Topic | Alignment Card + 原料 | Topic brief / 核心命题 |
+| 2 Evidence | Topic brief + 来源 | Nonfiction Ledger / 创作设定账本 |
+| 3 Shape | Ledger + style + length lock | Beat Sheet + 字数预算 |
+| 4 Draft | Beat Sheet + Ledger | Draft v0 |
+| 5 Self-review | Draft v0 + loop state | Revised Draft + Revision Log |
+| 6 Final review | Revised Draft + Ledger | Review Scorecard + Final + Delivery Receipt |
 
-```
-[阶段1: 选题扫描] ──> [阶段2: 素材深潜] ──> [阶段3: 架构节拍] ──> [阶段4: 分场拟真写稿] ──> [阶段5: 交叉质检] ──> [阶段6: 去味封装]
-```
+回退时优先回到**最早失效的稳定 artifact**，不要把其前面的已验收产物一起推倒。
 
-### 阶段 1：选题扫描与立项 (Topic Scan & Setup)
-- **输入**：粗线索、社会热点、历史材料、人物口述或用户灵感。
-- **参考规范**：调用 [templates/topic-evaluation.md](../templates/topic-evaluation.md) 与 [references/zhiyin-dna.md](zhiyin-dna.md)。
-- **输出**：`选题立项卡.md`
-- **核验门禁（Demanding Criteria）**：
-  1. **反差张力轴匹配**：是否命中四大反差张力轴（职业动作反差 / 资源命运反差 / 规训与身体真实反差 / 标准化轨道与脱轨反差）或 2026 演化的八大反差张力轴（含创伤生死反差 / 中产坠落反差 / 体制科研反差 / 隐忍父爱反差）？
-  2. **时代痛点与承重群体**：是否具备真实的承重群体（如断供中产、围绝经期女性、脱轨青年、留守师生、底层蓝领、残障伴侣、小镇普工）？
-  3. **推荐叙事结构模式**：从知音十二大结构模型（模式 A~G 及新增 模式 H~L）中选定 1 个适配模式。
-  4. **细节信源守恒**：是否具备可采信的一手口述、调查通报或公开材料？
 
-### 阶段 2：素材深潜与物象证据链 (Material & Timeline)
-- **输入**：访谈记录、网络镜像、多方证词、历史时间线。
-- **参考规范**：调用 [templates/character-evidence-card.md](../templates/character-evidence-card.md)。
-- **输出**：`人物与物象卡.md`、`事件严密时间线.md`
-- **核验门禁**：
-  1. 梳理出**至少 3 个承载主干情绪与情节拐点的物理物象**（有形状、有温度、有来源，如：200美元、羊绒衫冷汗、大屏手机老花眼、破摩托、捂热的鸡腿、赛事裹尸袋、拖身大浴巾、老父亲存折、红桦树皮“林中信”、骨头藕汤面、二八大杠与咸鸭蛋）。
-  2. 厘清当事人行动的核心阻碍与生理极限动作（血丝、流汗、自扇巴掌、痔疮发作、晨露入腋、咬牙拉大浴巾、双手摇轮磨出血、耳鸣痉挛反胃、台阶挪臀安放尿袋）。
-  3. 沉淀人物粗粝的生活原声台词（双声部口语，杜绝书面大道理）。
+## Stage 1：选题与命题
 
-### 阶段 3：大纲与分场节拍表 (Arc & Beat Sheet)
-- **输入**：`人物与物象卡.md`、字数规划（短篇 3000~5000 字 / 特稿 6000~10000+ 字）。
-- **参考规范**：调用 [templates/chapter-beat-sheet.md](../templates/chapter-beat-sheet.md) 与 [references/grounding-and-beats.md](grounding-and-beats.md)。
-- **输出**：`分场细纲.md`
-- **核验门禁**：
-  1. **黄金开局 Hook**：在前 15% 篇幅内完成反差呈现或极端场景切入（如：50岁李艾瑜伽服挨骂、贾浅浅热搜对比夏之光无兜底、阿尔卑斯凌晨零度冲线、40岁大厂失业宾馆开房吞药、苏梅岛车祸高位截瘫、农大保研考公失败去神农架当护林员、驱车1007公里回洪湖吃藕汤面、沔阳渔港一碗鳝鱼粉）。
-  2. **概念奠基（Grounded）**：后续段落引用的概念必须在前序节拍完成奠基，严禁跳步。
-  3. **节拍不可逆推**：每一次危机化解都伴随新的代价，杜绝机械降神。
-  4. **结尾收束**：严禁空洞说教，必须落在物象回响与具体行动上。
+**输入**：对齐卡、用户材料、探索碎片。
 
-### 阶段 4：分场景推进写作 (Scene-by-Scene Drafting)
-- **输入**：`分场细纲.md`
-- **参考规范**：调用 [references/zhiyin-dna.md](zhiyin-dna.md) 之 L1 表层语言规则。
-- **输出**：`正文草稿.md`
-- **执行纪律**：
-  1. **一场一景**：交代清楚物理空间、光线、气温、环境声响与肢体动作。
-  2. **单动词短句切分**：少用复杂长从句，多用单动词短句连续推进，形成电影分镜流。
-  3. **双声部语言**：对话保留生活毛边与方言习惯；旁白内敛克制，绝不代读者抒情哭泣。
-  4. **选择式节拍推进（Choose-your-own-adventure）**：每次只写一个节拍，禁止超前偷跑。
+完成前必须明确：
 
-### 阶段 5：交叉质检与连贯性审查 (Multi-angle Review)
-- **输入**：`正文草稿.md`
-- **参考规范**：调用 [templates/review-scorecard.md](../templates/review-scorecard.md)。
-- **输出**：`六维质检打分表.md`
-- **核验门禁**：
-  1. **真实性与信息守恒**（不虚构核心事实、时间线严丝合缝）。
-  2. **反差与认知深度**（是否达成非道德审判的时代共情，如“碎银思维”、去病耻感）。
-  3. **物象与生理密度**（3个物理物象是否前后呼应形成闭环）。
-  4. **语言节奏与呼吸感**（单段不超过 4 行，重点金句与转折单独成行）。
+- 一句话核心命题；
+- 目标读者真正关心的问题；
+- 文章需要建立的阅读承诺；
+- 当前 style；
+- 本文不处理的范围。
 
-### 阶段 6：去 AI 味终审与全案包装 (Deslop & Packaging)
-- **输入**：通过质检的草稿
-- **参考规范**：调用 [references/deslop-whitelist-zh.md](deslop-whitelist-zh.md)、[references/deslop-prose-en.md](deslop-prose-en.md) 与 [references/social-packaging.md](social-packaging.md)。
-- **输出**：`最终成稿.md`、`标题备选矩阵.md`
-- **执行纪律**：
-  1. **严苛逐行扫描去 AI 味**：排查并彻底清除翻案腔（“不是……而是……”）、假转折（无对立插“然而/事实上”）、空洞排比。
-  2. **生成 5 组知音标题备选**：
-     - 反差极地型（单感叹号推进）
-     - 微观白描型（单逗号平视）
-     - 时代追问型（单冒号反问）
-     - 风物市井型（在地温情）
-     - 社交多端短标题（X/微信/小红书）
+**完成标准**：不用“深度、价值、共鸣”等空词，也能用 1–2 句话说明文章为什么值得读。
+
+## Stage 2：素材与证据
+
+对非虚构，读取 [nonfiction-fidelity.md](nonfiction-fidelity.md) 并生成 [../templates/nonfiction-ledger.md](../templates/nonfiction-ledger.md)：
+
+- 锁定 `source_policy / reconstruction_policy / unknown_policy`；
+- 建立 Source Index 与 Claim Ledger，分别记录 FACT / CAUSAL / MOTIVE / PSYCHOLOGY / INTERPRETATION 的证据强度；
+- 建立绝对时间轴，所有“X 年前 / X 年后 / 持续 N 年”先做显式算术再进入正文；
+- 建立事实 / 引语 / 数字 / 来源清单；
+- 建立实体属性锁，品牌、族群、颜色、年龄、地点、物件属性未知时明确写入“禁止脑补”；
+- 原话标记为 VERBATIM / LIGHT-CLEAN / PARAPHRASE；
+- 建立核心物象账本，记录首次出现、中段动作、后段回收及来源；
+- 标出 UNKNOWN / RECONSTRUCTED 项，不把素材缺口用模型想象补齐。
+
+对小说 / 创作：
+
+- 建立人物状态、世界规则、已知事件和本次允许新增的边界。
+
+**完成标准**：正文计划中的关键事实或关键设定都有来源 / 授权；关键因果、动机和心理主张没有超过 Claim Ledger 的证据强度；所有相对时间都有绝对锚点；引号内对白都有 Quote ID；关键实体不存在待模型自由补全的属性空洞。
+
+## Stage 3：结构与字数预算
+
+读取 [alignment-and-length.md](alignment-and-length.md) 和当前 style。
+
+把对齐卡中的 `target` 按同一 `count_mode / count_scope` 拆成段落 / 场景预算：
+
+| 单元 | 功能 | 预计字数 | 必须承载的信息 / 场景 |
+| :--- | :--- | ---: | :--- |
+| 1 | | | |
+| 2 | | | |
+
+规则：
+
+- 所有预算总和落在 runtime contract 的结构预算容差内，并使用对齐卡锁定的同一 `count_mode`。
+- 结构比例服从当前 style，不使用全局 15/70/15。
+- 每个单元必须有功能，不能为凑字数制造空段。
+- 若当前 style 使用物象锚定，每个主要单元至少登记 1 个**来源支持的物象动作 / 状态变化 / 回收点**；不能只在开头摆出物件，后半程遗忘。
+- 结构完成后按 [loop-policy.md](loop-policy.md) 执行 shape loop；默认轮数读取 runtime contract，用户可全局或用 `--shape-loops N` 单独覆盖。
+
+**完成标准**：删掉任何一个单元都会明确损失信息、推进、证据或情绪功能；物象账本没有只登场不回收的核心物象；字数预算闭合。
+
+## Stage 4：分段 / 分场写作
+
+按结构单元推进，不一次把后面所有段落提前写完。
+
+每完成一个主要结构节点，检查：
+
+- 是否偏离核心命题；
+- 是否引入无来源事实、属性、现场氛围或动作；
+- 是否把 `ATTRIBUTED / INFERRED` 的因果、动机或心理写成了无归属的确定事实；
+- 相对时间是否来自 Stage 2 的 Derived Facts，而不是凭感觉写“几年前”；
+- 引号对白是否来自已登记原话，是否被过度雅化；
+- 当前段落是否完成登记的物象动作 / 回收；
+- POV 是否仍与对齐卡一致；
+- 已用字数 vs 预算；
+- 是否提前消费了后文的信息或结论。
+
+累计长度偏差超过 runtime contract 的 `cumulative_budget_drift_ratio` 时，在下一单元调整；不要用重复解释硬凑。
+
+## Stage 5：主会话自检与 Deslop
+
+以 Stage 4 初稿为基线，按 runtime contract 执行 draft loop；用户可用 `--loops N` 或 `--draft-loops N` 覆盖：
+
+- **Loop 1（硬正确性）**：信息守恒、时间算术、实体属性、原话保真、POV、连续性、字数。
+- **Loop 2（编辑质量）**：重复与无功能段落、当前 style、一致性、物象回收、高置信 deslop、网文烂梗与说教句。
+
+每轮只改可定位问题；已经有效的段落冻结，不为了“有变化”重写。
+
+短文本和低风险稿件到这里通常已经可以交付；重要非虚构长稿仍必须进入 Stage 6。
+
+## Stage 6：终审与交付
+
+只有这一阶段允许 reviewer。读取 [review-council.md](review-council.md)。
+
+根据风险调用 0 / 1 / 2 个 reviewer：
+
+- Integrity：事实、约束、时间算术、属性溯源、原话、连续性；
+- Editorial：读者、结构、节拍、风格、烂梗、说教与 AI 痕迹。
+
+**达到 runtime contract 当前 `count_mode` 的长篇阈值时，纪实特稿 / 调查 / 人物报道固定调用两个 reviewer。** review loop 数服从 runtime contract 或用户覆盖；每轮 reviewer 上限始终为 2。
+
+主会话合并 findings 并最终修改；每轮修改写入 [../templates/revision-log.md](../templates/revision-log.md)。若 `delivery_receipt != hidden`，交付正文后附 [../templates/delivery-receipt.md](../templates/delivery-receipt.md) 的简版回执。
+
+**最终门禁**：
+
+- BLOCKER = 0；
+- 字数落入验收区间；
+- 事实边界未被突破；
+- 当前 style 没有被通用规则覆盖；
+- 用户要求的交付物全部存在。

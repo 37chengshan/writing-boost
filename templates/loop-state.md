@@ -1,0 +1,23 @@
+# Loop State
+
+- **alignment_revision**：
+- **stage**：
+- **loop_type**：automatic / feedback
+- **round**：`__ / __`
+- **source_artifact**：
+- **user_delta**：
+  - target：
+  - scope：
+  - preserve：
+  - acceptance：
+- **frozen_constraints**：
+- **frozen_content**：
+- **issue_set**：
+  - BLOCKER：
+  - MAJOR：
+  - MINOR：
+- **changes_made**：
+- **regressions**：
+- **length_before / after**：
+- **acceptance_result**：PASS / CONTINUE / NEED_USER
+- **next_action**：

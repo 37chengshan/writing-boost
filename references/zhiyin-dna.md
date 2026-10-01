@@ -99,9 +99,4 @@ $$\text{知音 Travel 爆款叙事} = \text{具象反差 Hook} + \text{底层微
 
 ## 模块化资产与复刻检查表
 
-知音 Travel 依照 `writing-dna-skill` 蒸馏的完整模块化产物位于项目目录：
-- 总览与七关检查表：[`docs/知音Travel/distilled/Writing-DNA.md`](file:///Users/cc/code/writing/docs/知音Travel/distilled/Writing-DNA.md)
-- L1 语言动词链：[`docs/知音Travel/distilled/语言DNA.md`](file:///Users/cc/code/writing/docs/知音Travel/distilled/语言DNA.md)
-- L2 十二大叙事骨架：[`docs/知音Travel/distilled/文章结构模板.md`](file:///Users/cc/code/writing/docs/知音Travel/distilled/文章结构模板.md)
-- L3~L5 选题与认知：[`docs/知音Travel/distilled/写作视角与认知框架.md`](file:///Users/cc/code/writing/docs/知音Travel/distilled/写作视角与认知框架.md)
-- L6 实景视觉指南：[`docs/知音Travel/distilled/视觉风格指南.md`](file:///Users/cc/code/writing/docs/知音Travel/distilled/视觉风格指南.md)
+知音 Travel 的完整蒸馏语料可能位于宿主 workspace 的 `docs/知音Travel/distilled/`，但它**不是本 skill 的运行时必需依赖**。本 skill 可独立使用当前打包的 style / reference；若宿主没有该外部语料目录，不应报错或猜测其内容。

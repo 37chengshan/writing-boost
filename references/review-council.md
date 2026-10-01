@@ -1,78 +1,88 @@
-# 多视角对抗式审查委员会运行规范 (Adversarial Review Council Protocol)
+# 双路交叉终审协议 (Two-Reviewer Cross Review)
 
-> 本规范定义了 `writing-boost` 在阶段 5（交叉质检与终审）中，如何调度专职审查子代理委员会对稿件进行法医级、对抗式、多维度的质检与裁决。
+> 子代理只允许出现在 review 阶段；任何一次审查最多调用两个 reviewer。主会话始终负责最终合并与改稿，不再额外派遣 chief-editor 子代理。
 
----
+## 1. 两个正交 Reviewer
 
-## 1. 审查委员会架构与分工
+| Reviewer | 负责 | 不负责 |
+| :--- | :--- | :--- |
+| [integrity-reviewer](../agents/integrity-reviewer.md) | 来源、信息守恒、事实、时间空间因果、连续性、用户契约 | 文风偏好、修辞审美 |
+| [editorial-reviewer](../agents/editorial-reviewer.md) | 读者体验、结构节拍、风格一致性、AI 痕迹、煽情与说教 | 外部事实核验 |
 
-审查委员会由 **4 个专职质检子代理 + 1 个裁决仲裁总编辑** 组成，形成分立制衡、红黑对抗的质检矩阵：
+主会话是 synthesizer。它负责去重、判断冲突、决定修改优先级，并执行最终修改。**不要再 spawn 第三个“主编”代理。**
 
-```
-                           ┌────────────────────────┐
-                           │      待审查稿件 / 章节   │
-                           └───────────┬────────────┘
-                                       │
-        ┌──────────────────┬───────────┴───────────┬──────────────────┐
-        ▼                  ▼                       ▼                  ▼
-┌───────────────┐  ┌───────────────┐       ┌───────────────┐  ┌───────────────┐
-│devils-advocate│  │logic-inquisitor│      │  slop-hunter  │  │pacing-auditor │
-│ 毒舌反驳者     │  │ 逻辑事实质检官 │      │ AI味假转折猎手 │  │ 节拍共情体检官 │
-│ (廉价煽情/爹味)│  │ (时空因果/守恒)│      │ (翻案腔/排比)  │  │ (前15%Hook/余韵)│
-└───────┬───────┘  └───────┬───────┘       └───────┬───────┘  └───────┬───────┘
-        │                  │                       │                  │
-        └──────────────────┼───────────────────────┴──────────────────┘
-                           ▼
-               ┌───────────────────────┐
-               │     chief-editor      │
-               │   总编辑裁决与仲裁官   │
-               │ (加权打分·手术方案·终决)│
-               └───────────┬───────────┘
-                           ▼
-          [ PASS 准印 / REVISE 退修 / REJECT 枪毙 ]
-```
+## 2. 0 / 1 / 2 动态调度
 
-### 子代理档案与提示词入口
+### 0 reviewer
 
-| 子代理标识 | 角色名称 | 核心质检靶点 | 提示词规范入口 |
-| :--- | :--- | :--- | :--- |
-| `devils-advocate` | 毒舌反驳者与怀疑论审判官 | 廉价煽情、道德爹味、纸片人脸谱化、廉价和解、读者出戏点 | [`agents/devils-advocate.md`](../agents/devils-advocate.md) |
-| `logic-inquisitor` | 逻辑与物理事实质检官 | 物理现实、生理极限、时间线悖论、信息守恒（零虚构）、空间瞬移 | [`agents/logic-inquisitor.md`](../agents/logic-inquisitor.md) |
-| `slop-hunter` | AI味与假转折猎手 | “不是……而是……”翻案腔、喉头虚词、机械三元排比、破折号滥用 | [`agents/slop-hunter.md`](../agents/slop-hunter.md) |
-| `pacing-auditor` | 节拍与共情体检官 | 前 15% 黄金 Hook、概念奠基（Grounding）、场景电荷反转、结尾物象收束 | [`agents/pacing-auditor.md`](../agents/pacing-auditor.md) |
-| `chief-editor` | 主编总评与裁定仲裁官 | 汇总四路报告、裁决审查分歧、评定加权终审分数、下达退修三部曲手术单 | [`agents/chief-editor.md`](../agents/chief-editor.md) |
+以下情况主会话自己检查即可：
 
----
+- 短文本、局部润色、标题、摘要；
+- 低风险改写；
+- 只做确定性 deslop 扫描；
+- 用户明确要求快速处理且不需要交叉审核。
 
-## 2. 调度执行模式 (Execution Modes)
+### 1 reviewer
 
-为适应不同的 Agent 运行环境（多代理并发环境 vs 单进程会话环境），委员会支持双模调度：
+只派最相关的一路：
 
-### 模式 A：并发子代理会审 (Full Parallel Spawn Mode)
-- **触发条件**：当前运行时支持子代理调用（如 Claude Code Task/Subagent、OpenCode、Codex CLI、Antigravity `invoke_subagent` 或 Agent MCP）。
-- **执行流程**：
-  1. 宿主 Agent 读取待审稿件原文及相关事实素材。
-  2. 并发向 `devils-advocate`、`logic-inquisitor`、`slop-hunter`、`pacing-auditor` 发送请求，传入稿件与审查规范。
-  3. 各子代理独立输出结构化 Findings。
-  4. 宿主 Agent 收集四份报告，统一作为上下文传给 `chief-editor`。
-  5. `chief-editor` 输出最终的《终审裁决书》及《加权成绩单》。
+- 事实密集、调查、纪实、技术 / 医学 / 法律约束多：优先 Integrity。
+- 纯文学、品牌语气、去 AI 味、节拍与读感：优先 Editorial。
 
-### 模式 B：单会话分步会诊降级 (Sequential Solo Review Mode)
-- **触发条件**：当前运行于嵌套子代理中，或宿主平台不支持子代理派发。
-- **执行流程**：
-  - 宿主 Agent 在单一上下文中，按照“毒舌反驳 $\rightarrow$ 逻辑核验 $\rightarrow$ 去AI味扫描 $\rightarrow$ 节拍体检 $\rightarrow$ 主编裁决”的固定顺序，轮流切换思维模式（Perspective Switching），完整填报 5 份标准报告。
+### 2 reviewers
 
----
+同时派两路用于：
 
-## 3. 终审通关及格线与一票否决权
+- **达到 runtime contract 当前 `count_mode` 的非虚构长篇阈值时，纪实特稿、调查、人物报道最终交付强制双审**；当前默认中文 `zh_units >= 3000`，英文 `words >= 1800`。
+- 其他重要长稿最终交付；
+- 用户明确要求“深度审查 / 交叉审核”；
+- 同时存在事实风险与明显编辑风险；
+- 第一轮主会话发现问题跨越两个关注面。
 
-委员会设立两级硬门禁，严禁妥协与放水：
+**硬上限：2。** reviewer 不能再派子代理。强制双审指“两个正交 reviewer”，不是恢复五人委员会。
 
-1. **量化门禁**：
-   - 6 项评估指标总分 $\ge 45/60$。
-   - 任何单项指标不得低于 7 分。
-2. **一票否决红线 (Veto Red-Gates)**：
-   - 若 `logic-inquisitor` 判定存在事实虚构或严重时空逻辑悖论 $\rightarrow$ **一票退修**。
-   - 若 `slop-hunter` 判定千字包含 $\ge 3$ 处翻案腔或核心段落充斥机械排比 $\rightarrow$ **一票退修**。
-   - 若 `devils-advocate` 判定存在消费苦难与虚假道德升华 $\rightarrow$ **一票退修**。
-   - 若 `pacing-auditor` 判定开篇 200 字无有效抓手或严重拖沓 $\rightarrow$ **一票退修**。
+## 3. 不同模型的交叉审核
+
+如果宿主运行时支持为 reviewer **显式选择不同模型**：
+
+1. 在第一次需要双路终审时告诉用户：不同模型家族可能降低相关性盲点。
+2. 若用户尚未指定，先询问用户允许用于审查的模型名单 / 额度范围。
+3. 最多选两个模型，分别承担 Integrity 与 Editorial。
+4. 不得静默切到外部模型、更高价格模型或用户未授权的模型。
+
+如果宿主不能选择 reviewer 模型：
+
+- 使用当前可用模型的隔离上下文；
+- 仍保持两个 reviewer 的关注面独立；
+- 不要把这种情况描述成“异构模型交叉审核”。
+
+## 4. 合并规则
+
+主会话按以下顺序合并：
+
+1. `BLOCKER`：事实越界、信息新增、用户契约违反、严重连续性错误。
+2. `MAJOR`：明显影响理解、可信度、目标读者体验或风格一致性的问题。
+3. `MINOR`：局部可优化但不影响交付的问题。
+4. 两 reviewer 冲突时，优先级为：
+   - 用户明确要求
+   - 事实 / 信息守恒
+   - 已锁定 style
+   - 编辑建议
+5. reviewer 的建议不是命令。主会话必须回看原文后再修改。
+
+## 5. Review Loop
+
+review 阶段遵循 [loop-policy.md](loop-policy.md)（review → 主会话修订 → re-review）。默认 review loop 数读取 [`../runtime-contract.json`](../runtime-contract.json)；用户可用 `--loops N` 或 `--review-loops N` 覆盖。
+
+- Round 1：全量查 BLOCKER / MAJOR / MINOR，主会话修订。
+- Round 2：重点复核上一轮修复和回归，不重新无差别发散新审美意见。
+- 用户指定更多轮时，每轮仍最多两个 reviewer；不得通过增加 agent 数量代替循环。
+- 用户在任何轮提出新意见时，把意见作为 `user_delta`，只回退到最早受影响阶段。
+
+## 6. 终止条件
+
+- 所有 BLOCKER 清零。
+- 字数仍在锁定验收区间内。
+- 修改没有引入新的事实、观点或限定强度变化。
+- 本轮没有新的 MAJOR，或剩余问题仅属无法由契约裁决的审美分歧。
+- 达到用户指定循环预算后停止；仍有分歧时明确交给用户，不继续自动 spawn。

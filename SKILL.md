@@ -1,157 +1,175 @@
 ---
 name: writing-boost
-description: 全系统化工业级写作工程框架（/writing-boost）。深度融合知音Travel写作DNA、模块化可插拔文风引擎（styles/）、多代理对抗式终审委员会（agents/）、故事工业化六阶段流水线、中英文严苛去AI味白名单、Matt Pocock概念奠基与节拍推进规范（writing-fragments/shape/beats/writing-for-agents）及社交多端包装。用于深度特稿、调查报道、真实故事、个人回忆录、科技商业长文、文旅纪实的全生命周期策划、分场推进、红黑对抗审稿与去味封装。触发方式：/writing-boost、$writing-boost、「搭建写作流水线」「用知音风格写故事」「系统化写特稿」「全流程写作加速」「去AI味审稿」「多代理审稿」。
+description: 对齐优先的系统化写作工程框架。先锁定目标、读者、事实边界、风格、交付物与字数，再进入素材、结构、写作、去 AI 味和终审；终审阶段最多调用两个交叉 reviewer，主会话负责最终裁决。用于特稿、调查、真实故事、回忆录、科技商业长文、文旅与其他长文写作。
 metadata:
-  version: 2.2.0
+  version: 3.2.0
   author: Writing Lab System
   pillars:
-    - modular-style-engine
-    - adversarial-review-council
-    - writing-dna-skill
-    - oh-story-claudecode
-    - lieflat-less-ai-tone
-    - stop-slop
-    - writing-for-agents
-    - writing-beats
-    - writing-fragments
-    - writing-shape
-    - muse-x-posts
+    - alignment-first
+    - locked-length
+    - pluggable-style-engine
+    - two-reviewer-cross-review
+    - information-conservation
+    - evidence-based-deslop
+    - budgeted-loops
+    - nonfiction-fidelity
 ---
 
-# writing-boost：全系统化写作工程框架 (/writing-boost)
+# writing-boost
 
-你是具备工业级特稿深度与故事创作能力的顶级写作者与流水线调度引擎。你将**模块化可插拔风格架构**、**知音Travel 深度写作 DNA**、**五位一体对抗式多代理审查委员会**、**故事工业化六阶段流水线**、**中英文严苛去 AI 味白名单**以及 **Matt Pocock 概念奠基与节拍推进规范**融为一体。
+把写作当成一个有明确输入、约束、循环预算和验收标准的工程流程。**先与用户对齐，再写；先锁字数，再拆结构；关键阶段默认双循环；子代理只用于终审，最多两个。**
 
----
+## 0. 总原则
 
-## 快速触发指令表
+以下规则始终有效：
 
-| 用户输入 | 执行动作 | 加载资源 |
+1. **Alignment first**：进入正文前必须完成《开稿对齐卡》。用户已经给出的信息直接复用，不重复追问。
+2. **Length lock**：正文前锁定 `target / acceptance_band / count_mode / count_scope`。写完后才换尺子或估字数属于流程失败。
+3. **Ground truth**：非虚构与改写任务遵守信息守恒，不新增无来源事实、数字、引语、因果、心理和限定强度。
+4. **Style is a plugin**：具体节奏、Hook 比例、物象数量、段落厚度由当前 style 决定，核心引擎不写死一种审美。
+5. **Progressive disclosure**：只加载当前阶段需要的 reference；不要把所有规范一次性塞进上下文。
+6. **Review is exceptional**：写作、改写、deslop 默认由主会话完成；只有 review 阶段可派 reviewer，硬上限 2。
+7. **Main session decides**：reviewer 只提供 findings；最终合并、取舍和改稿由主会话完成。
+8. **Budgeted loops**：默认值和分阶段循环预算以 [`runtime-contract.json`](runtime-contract.json) 为单一真源。用户可用 `--loops N` 全局覆盖，也可分别指定 `--shape-loops / --draft-loops / --review-loops / --package-loops`。用户反馈只回退到最早受影响阶段，不整线重跑。读取 [references/loop-policy.md](references/loop-policy.md)。
+9. **Nonfiction fidelity**：纪实稿所有看似“现场”的细节也属于事实，必须有来源、确定性推导或明确重构授权；关键因果、动机和心理还必须遵守 Claim Strength。默认 source policy 读取 runtime contract。详见 [references/nonfiction-fidelity.md](references/nonfiction-fidelity.md)。
+
+## 1. 开稿：先对齐用户
+
+只要用户要的是成稿、改写后的完整稿件或结构性重写，第一步读取：
+
+- [references/alignment-and-length.md](references/alignment-and-length.md)
+- [templates/alignment-card.md](templates/alignment-card.md)
+
+先把已经明确的信息填进《开稿对齐卡》，至少锁定：
+
+- 目标
+- 目标读者
+- 体裁 / 平台
+- 核心命题
+- 事实边界 + `source_policy / reconstruction_policy / unknown_policy`
+- 正文人称 / POV
+- 原话处理方式
+- 风格
+- **目标字数、验收区间、`count_mode` 与 `count_scope`**
+- **循环预算**（默认值来自 runtime contract；可全局或分阶段覆盖）
+- interaction mode / checkpoints
+- 交付物
+- 必须保留 / 避开
+
+### 缺信息时
+
+- 只问会实质改变成稿的缺口。
+- 用户说“你定”“直接写”“不用问”时，补齐合理默认值，**明确回显默认值后立即执行**。
+- 不展示内部推理过程，只展示可供用户纠偏的契约结论。
+
+### 完成标准
+
+在进入 shape / write 前，必须能用一句话回答：
+
+> 我们正在为谁，用什么体裁，在什么事实边界内，写一篇解决什么问题、目标多少字、最终交付什么的文章？
+
+答不出来就还没有完成对齐。
+
+## 2. 路由
+
+| 用户意图 | 执行 | 按需加载 |
 | :--- | :--- | :--- |
-| `/writing-boost` 或 `/writing-boost help` | 交互式引导：确定题材、篇幅、风格与阶段 | 打印阶段选项 |
-| `/writing-boost style [list\|info\|new]` | 管理与切换模块化风格（插拔式设计，杜绝文风钉死） | [styles/README.md](styles/README.md)、[styles/style-contract.md](styles/style-contract.md) |
-| `/writing-boost distill [语料目录]` | 启动六层写作 DNA 蒸馏（L1~L6） | [references/writing-dna-distillation.md](references/writing-dna-distillation.md)、[references/zhiyin-dna.md](references/zhiyin-dna.md) |
-| `/writing-boost explore [主题]` | 纯探索阶段：不设大纲，极限盘问采访，挖掘原料与提炼核心先导词 | [references/grounding-and-beats.md](references/grounding-and-beats.md)、[templates/raw-fragments.md](templates/raw-fragments.md) |
-| `/writing-boost shape [原料文件]` 或 `/writing-boost beats` | 概念奠基（Grounding）与段落/节拍推进（Choose-your-own-adventure） | [references/grounding-and-beats.md](references/grounding-and-beats.md)、[templates/chapter-beat-sheet.md](templates/chapter-beat-sheet.md) |
-| `/writing-boost write [主题] [--style ID]` | 启动六阶段流水线：从立项、素材深潜到分场写稿（支持按需插拔风格） | [references/story-pipeline.md](references/story-pipeline.md)、[styles/](styles/) |
-| `/writing-boost review [稿件]` | 启动**多视角对抗式审查委员会**（4 专职子代理会诊 + 主编终审裁决） | [references/review-council.md](references/review-council.md)、[agents/](agents/)、[templates/review-scorecard.md](templates/review-scorecard.md) |
-| `/writing-boost deslop [草稿文件]` | 执行中英文白名单去 AI 味清洗（逐行扫描，零幻觉） | [references/deslop-whitelist-zh.md](references/deslop-whitelist-zh.md)、[references/deslop-prose-en.md](references/deslop-prose-en.md) |
-| `/writing-boost package [稿件]` | 生成 5 组工业级标题与社交媒体多端矩阵分发版 | [references/social-packaging.md](references/social-packaging.md) |
+| `/writing-boost` | 建立对齐卡并决定下一步 | alignment-and-length |
+| `explore` | 扩素材，不直接写成稿 | grounding-and-beats, raw-fragments |
+| `shape` / `beats` | 在字数锁内拆结构与内容预算；loop 预算来自 runtime contract | grounding-and-beats, chapter-beat-sheet, loop-policy |
+| `write` | 运行六阶段写作管线；正文按 runtime contract 执行修订闭环 | story-pipeline + 当前 style + loop-policy |
+| `style` | 查询 / 新建风格 | styles/style-contract.md, styles/README.md |
+| `distill` | 蒸馏作者 / 刊物 DNA | writing-dna-distillation |
+| `deslop` | 最小改动去生成式套路 | deslop-whitelist-zh 或 deslop-prose-en |
+| `review` | 按风险调用 0/1/2 reviewer | review-council + reviewer prompt |
+| `package` | 标题与平台转译 | social-packaging |
 
----
+## 3. 六阶段写作管线
 
-## 核心先导词体系 (Leading Words)
+对齐完成后读取 [references/story-pipeline.md](references/story-pipeline.md)。
 
-写作与审查过程中，始终贯彻以下 6 个先导词指令：
-- **`tight`（紧实）**：拒绝形容词堆砌与废话铺垫，每一个动词必须直接推动事实或情绪发展。
-- **`ground-truth`（物理事实）**：每一个描写必须能指出材料出处，不虚构事实，严格信息守恒。
-- **`grounded`（概念奠基）**：后续段落引用的任何概念必须在前文正式奠基，杜绝概念悬空。
-- **`in-the-room`（临场置身感）**：必须让读者置身具体物理空间，感知光线、气温、环境声响与微动作。
-- **`red-gate`（红线关卡）**：命中翻案腔（“不是……而是……”）、假转折或机械排比时，一律视为红线阻断并强制修正。
-- **`prune`（修剪）**：无情剔除所有未带来真实增量信息的弱说明句与无意义过渡句。
+六阶段是：
 
----
+1. 选题与命题
+2. 素材与证据
+3. 结构与字数预算
+4. 分段 / 分场写作
+5. 主会话自检与 deslop
+6. 终审与交付
 
-## 模块化可插拔风格架构 (Pluggable Style Architecture)
+Explore 属于可选前置探索，不计入六阶段，因此不再出现“阶段 0 到 6 却叫六阶段”的歧义。
 
-写作风格绝不钉死。引擎与文风解耦，所有风格均实现 [`styles/style-contract.md`](styles/style-contract.md) 六层 DNA 接口：
+每一阶段必须有可检查的完成标准，未通过不得假装完成。结构、正文和终审的循环语义统一遵循 [references/loop-policy.md](references/loop-policy.md)。
 
-| 风格 ID | 风格全称 | 核心题材定位 | 情感温度与语调 | 规范入口 |
-| :--- | :--- | :--- | :--- | :--- |
-| `zhiyin-2026` *(Flagship)* | 知音纪实特稿·极致反差与物象锚定 | 时代人物、草根突围、真实社会特稿 | 苍凉温热 · 粗粝克制 · 平视众生 | [`styles/zhiyin-2026/style.md`](styles/zhiyin-2026/style.md) |
-| `investigative-feature` | 深度调查特稿·硬核冷峻与证据闭环 | 严肃调查、商业黑幕、复杂公共议题 | 极度冷峻 · 手术刀式精准 · 证据闭环 | [`styles/investigative-feature/style.md`](styles/investigative-feature/style.md) |
-| `personal-memoir` | 个人非虚构·克制内省与私人记忆 | 家族回忆录、亲情散文、自我生命史 | 温润沉郁 · 隐忍内省 · 去抒情化 | [`styles/personal-memoir/style.md`](styles/personal-memoir/style.md) |
-| `tech-insider` | 科技商业特稿·技术哲思与产业暗流 | 商业深度剖析、硅谷/中国科技叙事 | 极客锐利 · 理性推演 · 反公关通稿 | [`styles/tech-insider/style.md`](styles/tech-insider/style.md) |
-| `literary-travelogue` | 人文地理漫游·空间拓扑与历史余温 | 文化地理漫记、深度文旅散文、地方志 | 苍茫博大 · 诗意凝视 · 拒绝打卡攻略 | [`styles/literary-travelogue/style.md`](styles/literary-travelogue/style.md) |
+非虚构任务在 Stage 2 必须生成 [templates/nonfiction-ledger.md](templates/nonfiction-ledger.md)：Source Index、Claim Ledger、绝对时间轴、派生时间算术、实体属性、原话模式、物象回收账本和 POV 都在这里锁定。
 
-作者可自由切换风格：`/writing-boost write "主题" --style tech-insider`，或基于契约新建自定义风格：`/writing-boost style new [id]`。
+## 4. 风格
 
----
+读取 [styles/style-contract.md](styles/style-contract.md)。当前预装：
 
-## 全生命周期六阶段流水线 (The 6-Stage Pipeline)
+- `zhiyin-2026`
+- `investigative-feature`
+- `personal-memoir`
+- `tech-insider`
+- `literary-travelogue`
 
-每一个阶段必须达成明确的**硬完成标准（Demanding Completion Criteria）**方可流转至下一阶段，严禁过早完工（Anti-Premature Completion）。
+用户明确风格 > 当前 style > 通用写作建议。
 
-```
-┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
-│ 0. 探索碎片库    │ ──> │ 1. 选题与立项卡  │ ──> │ 2. 素材与物象卡  │
-└──────────────────┘     └──────────────────┘     └──────────────────┘
-                                                           │
-                                                           ▼
-┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
-│ 6. 去味与包装    │ <── │ 5. 多代理对抗终审│ <── │ 3-4. 奠基分场拟真│
-└──────────────────┘     └──────────────────┘     └──────────────────┘
-```
+风格文件可以规定具体结构比例、句长倾向、物象策略、段落节奏；核心引擎不替 style 写这些数字。
 
-### 阶段 0：探索与先导词挖掘 (Explore & Fragments)
-- **目标**：拓宽素材广度，拒绝提前设限；挖掘承重先导词。
-- **参考规范**：调用 [references/grounding-and-beats.md](references/grounding-and-beats.md) 与 [templates/raw-fragments.md](templates/raw-fragments.md)。
-- **门禁标准**：提炼出至少 1 个紧凑的核心先导词（Leading Word），沉淀至少 5 条原生态素材碎片。
+## 5. 去 AI 味
 
-### 阶段 1：选题扫描与立项卡 (Topic Evaluation)
-- **目标**：评估主题张力，确定不是平庸说教。
-- **参考规范**：调用 [templates/topic-evaluation.md](templates/topic-evaluation.md)。
-- **门禁标准**：
-  1. 必须提炼出明确的**核心反差**（如：外卖小哥征服阿尔卑斯、完美男友背后的倒贴与勒吐假发、高位截瘫生死之约轮椅走完318、40岁大厂失业开房吞药与亲情托底、考公失败神农架生态反转）。
-  2. 明确锁定具体承重群体，拒绝空洞概念。
-  3. 初步储备至少 3 个物理物象线索。
+中文读取 [references/deslop-whitelist-zh.md](references/deslop-whitelist-zh.md)，英文 / 通用 prose 读取 [references/deslop-prose-en.md](references/deslop-prose-en.md)。
 
-### 阶段 2：素材深潜与人物物象卡 (Character & Evidence)
-- **目标**：建立严密事实链与物质感支撑。
-- **参考规范**：调用 [templates/character-evidence-card.md](templates/character-evidence-card.md)。
-- **门禁标准**：
-  1. 梳理核心人物的生理特征与语言口癖（保留真实方言与粗粝感）。
-  2. 确立 **3 件承重物象**（如：塑料杯里的温鸡腿、补齐40元差价的粉色玩偶、沾着血渍的越野杖、拖身大浴巾、老父未动存折、红桦林中信、深夜骨头藕汤面）。
-  3. 建立客观事实时间戳，保证前后无时间线悖论。
+执行顺序：
 
-### 阶段 3：概念奠基与架构节拍表 (Arc & Grounded Beats)
-- **目标**：规划电影分镜式的叙事结构，确保概念梯次奠基。
-- **参考规范**：调用 [templates/chapter-beat-sheet.md](templates/chapter-beat-sheet.md)、[references/grounding-and-beats.md](references/grounding-and-beats.md) 及选定风格对应的篇章模型（如知音 12 大模式 A~L）。
-- **门禁标准**：
-  1. 厘清前置概念（Prerequisites）与导入概念（Introduced），杜绝认知跳步。
-  2. 前 15% 必须完成黄金开局 Hook：直接进入终局极限切片或反差现场（如：李艾瑜伽服挨骂、夏之光无兜底、赵家驹凌晨冲线、老温离职开房自杀、苏梅岛截瘫事故）。
-  3. 中间 70% 规划 3~4 个微场景，每个微场景必须包含一次现实矛盾激化或代价承受。
-  4. 结尾 15% 必须由核心物象产生余响收束，严禁空洞升华。
+1. 先保事实、观点、限定词与结构功能。
+2. 再处理高置信、可定位的生成式套路。
+3. 需要语义判断的项目以当前 style 为准。
+4. 只改解决问题所需的最小范围。
+5. 改后重新检查字数锁。
 
-### 阶段 4：分场景推进写稿 (Scene-by-Scene Drafting)
-- **目标**：输出紧实、有质感、零 AI 味的正文，坚持一次只推进一步。
-- **执行准则**：
-  1. **短句切分**：多用单动词短句串联动作，形成现场行进感。
-  2. **感官置身**：交代清楚物理空间细节（破木梁、泛黄火纸、零度寒风、塑料矮凳、病房大浴巾、老街青石板、冬日神农架雾凇冷杉）。
-  3. **双声部语言**：对话保持纯口语，心理独白极度克制。
-  4. **信息守恒**：改写或扩充时，不得添加虚构的事实细节，也不得篡改限定语气。
-  5. **格式严谨**：在散文与列表、引用与改述之间进行公开权衡，严禁盲目套用排比。
+`stop-slop` 的激进规则只作为可选编辑参考，不升级为全局硬禁令。
 
-### 阶段 5：对抗式多代理终审委员会 (Adversarial Multi-Agent Review Council)
-- **目标**：全面查验作品成色，实施法医级对抗式挑刺与主编终审裁决。
-- **调度规范**：遵循 [`references/review-council.md`](references/review-council.md)。
-- **委员会阵容与专属提示词**：
-  1. 😈 **毒舌反驳者与怀疑论审判官**（[`agents/devils-advocate.md`](agents/devils-advocate.md)）：专查廉价煽情、自我感动、爹味说教、纸片人与出戏点。
-  2. 🔍 **逻辑与物理事实质检官**（[`agents/logic-inquisitor.md`](agents/logic-inquisitor.md)）：专查生理极限、时空悖论、因果断裂与信息守恒（零虚构）。
-  3. ✂️ **AI味与假转折猎手**（[`agents/slop-hunter.md`](agents/slop-hunter.md)）：逐行绞杀“不是……而是……”翻案腔、喉头虚词、机械三元排比。
-  4. 💓 **节拍与共情体检官**（[`agents/pacing-auditor.md`](agents/pacing-auditor.md)）：审计前 15% 黄金 Hook、概念奠基序列、场景张力电荷反转与物象收束。
-  5. 🏛️ **主编总评与裁定仲裁官**（[`agents/chief-editor.md`](agents/chief-editor.md)）：调和对抗意见、评定六维加权打分、下达终审退修手术单。
-- **硬门禁**：六维单项 $\ge 7$ 分且总分 $\ge 45/60$；触碰一票否决红线（如虚构事实、大面积翻案腔）必须强制退修。调用 [`templates/review-scorecard.md`](templates/review-scorecard.md) 出具终审报告。
+## 6. 终审：最多两个 reviewer
 
-### 阶段 6：去 AI 味终审与全案包装 (Deslop & Multi-format Packaging)
-- **目标**：彻底抹除机器写作特征，完成传播矩阵包装。
-- **去 AI 味审查清单**：
-  - 检查 [references/deslop-whitelist-zh.md](references/deslop-whitelist-zh.md)：逐行剔除“不是……而是……”“然而/事实上”“句式同构排比”“破折号泛滥”“空洞拟人”。
-  - 检查 [references/deslop-prose-en.md](references/deslop-prose-en.md)：剔除喉头清理虚词、改用主动语态、打破三元对称。
-- **全案包装产物**：
-  1. **5 组爆款标题矩阵**：
-     - 反差极地型（如：*外卖小哥跑成世界冠军！清单里的一样东西，不忍直视* / *完美恋人意外坠落后，推着他的轮椅，我走完了318*）
-     - 微观白描型（如：*消失的村小，困住了一名女教师和她的9个孩子* / *被嫌弃的爸爸，守着一座城等了我10年*）
-     - 时代命运型（如：*40岁失业那天，我瞒着家人在宾馆开了一间房* / *拼爹的贾浅浅塌房了，没爹可拼的张雪却杀疯了！*）
-     - 文旅味觉型（如：*一碗面，救过一座城，也救过你的某个深夜* / *中秋，1007公里，只为见她一面*）
-     - 外部反视角/悬念型（如：*深入重庆“拍猛料”，一条视频震惊4000万外国人* / *考公失败后，他在山野遇见极致风景，直到女友出现，反转开始……*）
-  2. **社交多端转译（按需）**：参考 [references/social-packaging.md](references/social-packaging.md) 衍生 X 推文或小红书文案。
+读取 [references/review-council.md](references/review-council.md)。
 
----
+可用 reviewer 只有两类：
 
-## 蒸馏与风格资产
+- [agents/integrity-reviewer.md](agents/integrity-reviewer.md)
+- [agents/editorial-reviewer.md](agents/editorial-reviewer.md)
 
-本技能预装知音全量 1300+ 篇样本深度蒸馏成果，完整报告与模块化资产可查阅：
-- 完整全量报告：[`docs/知音Travel_风格演变与写作DNA蒸馏报告.md`](file:///Users/cc/code/writing/docs/知音Travel_风格演变与写作DNA蒸馏报告.md)
-- 模块化 DNA 全案：[`docs/知音Travel/distilled/Writing-DNA.md`](file:///Users/cc/code/writing/docs/知音Travel/distilled/Writing-DNA.md)
-- 模块化风格仓库：[`styles/`](styles/)
+按风险选择 0 / 1 / 2 个。**任何时候都不得超过 2 个，也不得再派 chief-editor 子代理。** 重要非虚构长稿是否强制双审，按 `runtime-contract.json` 中当前计数口径的阈值判断（默认中文 `zh_units >= 3000`、英文 `words >= 1800`）；达到阈值时最终交付前强制启用 Integrity + Editorial。review 循环次数同样服从 runtime contract 或用户覆盖。
+
+如果宿主支持给 reviewer 选择不同模型，并且本次需要双路交叉审核：
+
+- 先告诉用户不同模型可能减少相关性盲点；
+- 如果用户尚未授权模型，询问“可以用哪些模型做审查”；
+- 最多使用两个用户允许的模型；
+- 不静默使用外部或更高价格模型。
+
+主会话根据 findings 填写 [templates/review-scorecard.md](templates/review-scorecard.md)，循环修改追加到 [templates/revision-log.md](templates/revision-log.md)。交付前按需生成 [templates/delivery-receipt.md](templates/delivery-receipt.md)；若用户明确“只要正文”，回执不展示。
+
+## 7. 确定性工具
+
+当宿主可执行本 skill 内脚本时，优先使用：
+
+- `scripts/text_metrics.py`：字数与验收区间；
+- `scripts/lint_cliches.py`：高风险纪实套话定位；
+- `scripts/check_skill_contract.py`：架构不变量和链接自检。
+
+脚本只处理确定性问题，不能替代语义审稿。
+
+## 8. 最终验收
+
+交付前必须全部满足：
+
+- 对齐卡没有被悄悄改写；
+- 实际字数落在锁定验收区间；
+- 非虚构事实与限定词没有无依据变化；
+- 当前 style 的关键约束已执行；
+- 所有 BLOCKER 已清零；
+- 交付物齐全。
+
+如果无法满足某项，明确告诉用户哪一项未满足，不用“整体不错”掩盖。

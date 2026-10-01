@@ -1,43 +1,27 @@
-# Prose De-Slopping Rules (English & Universal Prose)
+# English / Universal Prose De-Slopping
 
-> Sourced from: Hardik Pandya's `stop-slop`  
-> Objective: Eliminate predictable AI writing patterns from general prose, essays, and translations.
+This reference is an **editorial advisory layer**, not a universal hard-ban list. The user's brief, factual fidelity, and the active style profile take precedence.
 
----
+## High-confidence targets
 
-## Core Rules
+- Empty throat-clearing that can be deleted without losing meaning.
+- Formulaic false antithesis used to manufacture depth.
+- Vague declaratives that replace an available concrete fact.
+- Repeated metronomic syntax across adjacent sentences when it is not an intentional rhetorical pattern.
+- Pull-quote phrasing that merely restates the previous paragraph.
 
-1. **Cut filler phrases and throat-clearing**:
-   - Strip openers: "It is important to remember that", "In a world where", "At the end of the day", "Here's what you need to know".
-   - Eliminate weak adverbs ("actually", "truly", "fundamentally", "deeply", "arguably").
+## Context-dependent targets
 
-2. **Break formulaic binary contrasts**:
-   - Banned: "Not X, but Y", "It's not about tools, it's about people", "Far from being a failure, it was...".
-   - Target: State Y directly. Name the actual phenomenon without staging false antitheses.
+Active voice, adverbs, em dashes, rhetorical questions, triplets, fragments, and paragraph length are style choices. Change them only when they hurt the active style or the reader's comprehension.
 
-3. **Active voice with human actors**:
-   - Ensure a human subject is doing the action.
-   - Ban false agency: Inanimate objects performing human verbs ("the dashboard realizes", "the system decides", "the complaint becomes a fix"). Name the person behind the action.
+## Fidelity
 
-4. **Vary sentence rhythm**:
-   - Break metronomic sentence cadences (e.g., three sentences in a row of equal length).
-   - Prefer pairs over triplets: Two items beat the artificial "rule of three" ("fast, safe, and reliable").
-   - Eliminate unnecessary em-dashes (`—`).
+Do not invent actors, motives, numbers, quotations, examples, or causal links to make prose more specific. Preserve qualifiers such as “may,” “often,” and “according to.”
 
-5. **Trust the reader**:
-   - Eliminate condescending hand-holding and didactic summary conclusions ("This reminds us that...", "Ultimately, the choice is ours").
-   - Strip pull-quote prose designed solely to sound wise.
+## Review question
 
----
+The useful test is not “does this look AI-written?” but:
 
-## 5-Dimension Slop Scoring Matrix
+> Does this sentence add information, advance the argument or scene, and sound consistent with the author/style contract?
 
-| Dimension | Audit Question | Target Score (1-10) |
-| :--- | :--- | :--- |
-| **Directness** | Are statements plain and direct, or announced? | $\ge 8$ |
-| **Rhythm** | Is cadence irregular and human, or metronomic? | $\ge 8$ |
-| **Trust** | Does it respect reader intelligence without preaching? | $\ge 8$ |
-| **Authenticity** | Does it sound like an accountable person in the room? | $\ge 8$ |
-| **Density** | Is there any slack, throat-clearing, or filler? | $\ge 8$ |
-
-*Total score must meet $\ge 40/50$ before prose is approved.*
+If yes, keep it unless a higher-priority rule says otherwise.

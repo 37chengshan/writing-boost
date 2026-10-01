@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "note": "High-risk review triggers for Chinese nonfiction. A hit is not an automatic deletion when it is a source quote, cited text, or intentional discussion.",
+  "patterns": [
+    {
+      "id": "predator-reality",
+      "phrase": "现实亮出了獠牙",
+      "severity": "high"
+    },
+    {
+      "id": "predator-fate",
+      "phrase": "命运露出獠牙",
+      "severity": "high"
+    },
+    {
+      "id": "snowball-disaster",
+      "phrase": "雪崩呼啸而至",
+      "severity": "high"
+    },
+    {
+      "id": "reality-punch",
+      "phrase": "生活给了他一记重拳",
+      "severity": "medium"
+    },
+    {
+      "id": "reality-punch-f",
+      "phrase": "生活给了她一记重拳",
+      "severity": "medium"
+    },
+    {
+      "id": "fate-gears",
+      "phrase": "命运的齿轮",
+      "severity": "high"
+    },
+    {
+      "id": "pressed-by-reality",
+      "phrase": "被现实按在地上摩擦",
+      "severity": "high"
+    },
+    {
+      "id": "warm-mask",
+      "phrase": "温情面纱",
+      "severity": "high"
+    },
+    {
+      "id": "arena",
+      "phrase": "角斗场",
+      "severity": "medium"
+    },
+    {
+      "id": "era-torrent",
+      "phrase": "时代洪流",
+      "severity": "medium"
+    },
+    {
+      "id": "straw-paper",
+      "phrase": "脆弱得像一张草纸",
+      "severity": "high"
+    },
+    {
+      "id": "last-straw",
+      "phrase": "最后一根稻草",
+      "severity": "medium"
+    },
+    {
+      "id": "lifesaving-straw",
+      "phrase": "救命稻草",
+      "severity": "medium"
+    },
+    {
+      "id": "knife-heart",
+      "phrase": "一把刀扎进心里",
+      "severity": "medium"
+    },
+    {
+      "id": "bolt-blue",
+      "phrase": "晴天霹雳",
+      "severity": "medium"
+    },
+    {
+      "id": "ice-cave",
+      "phrase": "如坠冰窟",
+      "severity": "medium"
+    },
+    {
+      "id": "heart-sank",
+      "phrase": "心猛地一沉",
+      "severity": "medium"
+    },
+    {
+      "id": "street-warmth",
+      "phrase": "市井的泥土里，有着实打实的温度",
+      "severity": "high"
+    },
+    {
+      "id": "effort-answer",
+      "phrase": "生活终会给努力的人答案",
+      "severity": "high"
+    },
+    {
+      "id": "fireworks-comfort",
+      "phrase": "平凡的烟火最抚凡人心",
+      "severity": "high"
+    },
+    {
+      "id": "life-meaning",
+      "phrase": "这也许就是生活的意义",
+      "severity": "high"
+    },
+    {
+      "id": "every-step-solid",
+      "phrase": "每一步，都踏踏实实",
+      "severity": "medium"
+    },
+    {
+      "id": "reconcile-self",
+      "phrase": "与自己和解",
+      "severity": "medium"
+    },
+    {
+      "id": "no-road-wasted",
+      "phrase": "人生没有白走的路",
+      "severity": "high"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "writing_boost_version": "3.2.0",
+  "defaults": {
+    "loops": 2,
+    "loops_by_stage": {
+      "shape": 2,
+      "draft": 2,
+      "review": 2,
+      "package": 0
+    },
+    "max_reviewers_per_round": 2,
+    "exact_length_tolerance_ratio": 0.05,
+    "structure_budget_tolerance_ratio": 0.03,
+    "cumulative_budget_drift_ratio": 0.1
+  },
+  "review": {
+    "reviewers": [
+      "integrity-reviewer",
+      "editorial-reviewer"
+    ],
+    "long_nonfiction_thresholds": {
+      "zh_units": 3000,
+      "words": 1800,
+      "visible_chars": 3500
+    },
+    "long_nonfiction_requires_both_reviewers": true,
+    "main_session_is_synthesizer": true
+  },
+  "length": {
+    "zh_default_mode": "zh_units",
+    "en_default_mode": "words",
+    "modes": {
+      "zh_units": "Count each Han character as 1 and each contiguous Latin/number token as 1; ignore whitespace and punctuation.",
+      "visible_chars": "Count every non-whitespace character including punctuation.",
+      "words": "Count whitespace-delimited Latin-style words/tokens.",
+      "platform": "Use the destination platform's own counter when available; otherwise report that the count is an approximation."
+    }
+  },
+  "stages": [
+    "topic",
+    "evidence",
+    "shape",
+    "draft",
+    "self_review",
+    "final_review"
+  ],
+  "priorities": [
+    "user_explicit_requirements",
+    "factual_fidelity",
+    "alignment_card",
+    "active_style",
+    "author_profile",
+    "general_deslop_advice"
+  ],
+  "nonfiction_defaults": {
+    "source_policy": "closed_corpus",
+    "reconstruction_policy": "forbidden",
+    "unknown_policy": "omit",
+    "quote_mode": "VERBATIM"
+  },
+  "interaction_defaults": {
+    "mode": "auto",
+    "checkpoints": [
+      "alignment"
+    ],
+    "delivery_receipt": "concise"
+  }
+}

@@ -1,0 +1,167 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 540" width="100%" height="100%">
+  <title>Writing Boost - End-to-End Pipeline and Council Architecture</title>
+  <defs>
+    <linearGradient id="pipeBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090D16" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="boxGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="styleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284C7" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#1E293B" stop-opacity="0.9" />
+    </linearGradient>
+    <linearGradient id="councilGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#1E1B4B" stop-opacity="0.4" />
+    </linearGradient>
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#38BDF8" />
+    </marker>
+    <marker id="arrowViolet" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#818CF8" />
+    </marker>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1200" height="540" rx="16" fill="url(#pipeBg)" stroke="#334155" stroke-width="1.5" />
+
+  <!-- Section Title -->
+  <text x="50" y="48" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#F8FAFC">
+    全生命周期六阶段流水线与多代理审查系统拓扑
+  </text>
+  <text x="50" y="74" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="400" fill="#94A3B8">
+    从探索碎片、选题反差、物象奠基，到模块化文风分场推进、四路红黑对抗质检与主编权威终审
+  </text>
+
+  <!-- Flow Row 1: Stages 0, 1, 2 -->
+  <g transform="translate(50, 105)">
+    <!-- Stage 0 -->
+    <rect x="0" y="0" width="330" height="110" rx="12" fill="url(#boxGrad1)" stroke="#38BDF8" stroke-width="1.2" />
+    <circle cx="28" cy="28" r="14" fill="#0284C7" />
+    <text x="23" y="33" font-family="sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">0</text>
+    <text x="54" y="32" font-family="sans-serif" font-size="15" font-weight="700" fill="#F8FAFC">探索碎片库 (Explore)</text>
+    <text x="20" y="62" font-family="sans-serif" font-size="12" fill="#94A3B8">• 挖掘承重先导词 (Leading Words)</text>
+    <text x="20" y="82" font-family="sans-serif" font-size="12" fill="#94A3B8">• 沉淀 ≥5 条原生态素材碎片</text>
+    <text x="20" y="100" font-family="monospace" font-size="11" fill="#38BDF8">规范: references/grounding-and-beats.md</text>
+
+    <!-- Arrow 0 -> 1 -->
+    <line x1="330" y1="55" x2="380" y2="55" stroke="#38BDF8" stroke-width="2" marker-end="url(#arrow)" />
+
+    <!-- Stage 1 -->
+    <g transform="translate(390, 0)">
+      <rect x="0" y="0" width="330" height="110" rx="12" fill="url(#boxGrad1)" stroke="#38BDF8" stroke-width="1.2" />
+      <circle cx="28" cy="28" r="14" fill="#0284C7" />
+      <text x="24" y="33" font-family="sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">1</text>
+      <text x="54" y="32" font-family="sans-serif" font-size="15" font-weight="700" fill="#F8FAFC">选题扫描与立项 (Topic)</text>
+      <text x="20" y="62" font-family="sans-serif" font-size="12" fill="#94A3B8">• 确立核心戏剧反差张力轴</text>
+      <text x="20" y="82" font-family="sans-serif" font-size="12" fill="#94A3B8">• 锁定具体承重群体，绝不空洞</text>
+      <text x="20" y="100" font-family="monospace" font-size="11" fill="#38BDF8">规范: templates/topic-evaluation.md</text>
+    </g>
+
+    <!-- Arrow 1 -> 2 -->
+    <line x1="720" y1="55" x2="770" y2="55" stroke="#38BDF8" stroke-width="2" marker-end="url(#arrow)" />
+
+    <!-- Stage 2 -->
+    <g transform="translate(780, 0)">
+      <rect x="0" y="0" width="320" height="110" rx="12" fill="url(#boxGrad1)" stroke="#38BDF8" stroke-width="1.2" />
+      <circle cx="28" cy="28" r="14" fill="#0284C7" />
+      <text x="23" y="33" font-family="sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">2</text>
+      <text x="54" y="32" font-family="sans-serif" font-size="15" font-weight="700" fill="#F8FAFC">素材深潜与物象 (Anchors)</text>
+      <text x="20" y="62" font-family="sans-serif" font-size="12" fill="#94A3B8">• 确立 ≥3 件承重真实物理物象</text>
+      <text x="20" y="82" font-family="sans-serif" font-size="12" fill="#94A3B8">• 客观时间戳 · 拒绝时空悖论</text>
+      <text x="20" y="100" font-family="monospace" font-size="11" fill="#38BDF8">规范: templates/character-evidence.md</text>
+    </g>
+  </g>
+
+  <!-- Vertical Arrow: Stage 2 -> Stage 3/4 -->
+  <line x1="990" y1="215" x2="990" y2="245" stroke="#38BDF8" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- Middle Section: Stage 3-4 (Drafting) + Pluggable Styles Block -->
+  <g transform="translate(50, 248)">
+    <!-- Stage 3-4 Drafting Card -->
+    <rect x="0" y="0" width="560" height="112" rx="12" fill="url(#boxGrad1)" stroke="#818CF8" stroke-width="1.2" />
+    <circle cx="28" cy="28" r="14" fill="#4F46E5" />
+    <text x="17" y="33" font-family="sans-serif" font-size="11" font-weight="700" fill="#FFFFFF">3-4</text>
+    <text x="54" y="32" font-family="sans-serif" font-size="15" font-weight="700" fill="#F8FAFC">分场推进与概念奠基 (Drafting)</text>
+    <text x="20" y="60" font-family="sans-serif" font-size="12" fill="#94A3B8">• 前 15% 极速 Hook (极限切片/反差现场) · 拒绝慢热交代</text>
+    <text x="20" y="80" font-family="sans-serif" font-size="12" fill="#94A3B8">• 中段 70% 场景电荷正负反转 · 后 15% 核心物象余响收尾</text>
+    <text x="20" y="100" font-family="sans-serif" font-size="12" fill="#94A3B8">• 短句动词串联 · 临场置身感 (In-the-room) · 绝对信息守恒</text>
+
+    <!-- Pluggable Style Block (Connected to Stage 3-4) -->
+    <g transform="translate(580, 0)">
+      <rect x="0" y="0" width="520" height="112" rx="12" fill="url(#styleGrad)" stroke="#38BDF8" stroke-dasharray="4 3" stroke-width="1.5" />
+      <text x="20" y="26" font-family="sans-serif" font-size="13" font-weight="700" fill="#38BDF8">模块化可插拔风格引擎 (Pluggable Style Engine)</text>
+      <text x="20" y="48" font-family="monospace" font-size="11" fill="#E2E8F0">支持 --style 动态插拔: [zhiyin-2026] [investigative] [memoir] [tech] [travel]</text>
+      <text x="20" y="70" font-family="sans-serif" font-size="11.5" fill="#94A3B8">严格遵循 style-contract.md 六层 DNA 接口 (L1词法 · L2结构 · L3选题 · L4物象 · L5认知 · L6排版)</text>
+      <text x="20" y="94" font-family="monospace" font-size="11" fill="#38BDF8">命令: /writing-boost style list | info | use | new</text>
+    </g>
+  </g>
+
+  <!-- Vertical Arrow: Stage 3-4 -> Stage 5 (Council) -->
+  <line x1="280" y1="360" x2="280" y2="385" stroke="#818CF8" stroke-width="2" marker-end="url(#arrowViolet)" />
+
+  <!-- Bottom Section: Stage 5 Review Council + Stage 6 Packaging -->
+  <g transform="translate(50, 390)">
+    <!-- Stage 5: Multi-Agent Review Council Container -->
+    <rect x="0" y="0" width="840" height="120" rx="12" fill="url(#councilGrad)" stroke="#C084FC" stroke-width="1.5" />
+    <circle cx="28" cy="26" r="14" fill="#9333EA" />
+    <text x="24" y="31" font-family="sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">5</text>
+    <text x="54" y="30" font-family="sans-serif" font-size="14" font-weight="700" fill="#F8FAFC">多视角对抗式审查委员会 (Adversarial Review Council)</text>
+    <text x="470" y="30" font-family="monospace" font-size="11" fill="#C084FC">通关门禁: 单项 ≥7分 且 总分 ≥45/60 (一票红线强制退修)</text>
+
+    <!-- 4 Subagents + Chief Editor Micro Badges -->
+    <g transform="translate(15, 48)">
+      <!-- Agent 1 -->
+      <rect x="0" y="0" width="150" height="58" rx="8" fill="#1E1B4B" stroke="#4338CA" stroke-width="1" />
+      <text x="8" y="20" font-family="sans-serif" font-size="11.5" font-weight="700" fill="#F87171">😈 devils-advocate</text>
+      <text x="8" y="38" font-family="sans-serif" font-size="10.5" fill="#CBD5E1">廉价煽情 / 爹味说教</text>
+      <text x="8" y="50" font-family="sans-serif" font-size="10" fill="#94A3B8">纸片人 / 读者出戏点</text>
+
+      <!-- Agent 2 -->
+      <rect x="160" y="0" width="150" height="58" rx="8" fill="#1E1B4B" stroke="#4338CA" stroke-width="1" />
+      <text x="8" y="20" font-family="sans-serif" font-size="11.5" font-weight="700" fill="#FBBF24">🔍 logic-inquisitor</text>
+      <text x="8" y="38" font-family="sans-serif" font-size="10.5" fill="#CBD5E1">物理现实 / 生理极限</text>
+      <text x="8" y="50" font-family="sans-serif" font-size="10" fill="#94A3B8">时间线闭环 / 零虚构</text>
+
+      <!-- Agent 3 -->
+      <rect x="320" y="0" width="150" height="58" rx="8" fill="#1E1B4B" stroke="#4338CA" stroke-width="1" />
+      <text x="8" y="20" font-family="sans-serif" font-size="11.5" font-weight="700" fill="#34D399">✂️ slop-hunter</text>
+      <text x="8" y="38" font-family="sans-serif" font-size="10.5" fill="#CBD5E1">"不是...而是..."翻案腔</text>
+      <text x="8" y="50" font-family="sans-serif" font-size="10" fill="#94A3B8">喉头虚词 / 机械排比</text>
+
+      <!-- Agent 4 -->
+      <rect x="480" y="0" width="150" height="58" rx="8" fill="#1E1B4B" stroke="#4338CA" stroke-width="1" />
+      <text x="8" y="20" font-family="sans-serif" font-size="11.5" font-weight="700" fill="#38BDF8">💓 pacing-auditor</text>
+      <text x="8" y="38" font-family="sans-serif" font-size="10.5" fill="#CBD5E1">前 15% 抓手强度</text>
+      <text x="8" y="50" font-family="sans-serif" font-size="10" fill="#94A3B8">概念奠基 / 终局余响</text>
+
+      <!-- Arrow to Chief -->
+      <line x1="635" y1="29" x2="655" y2="29" stroke="#C084FC" stroke-width="1.5" marker-end="url(#arrowViolet)" />
+
+      <!-- Agent 5: Chief Editor -->
+      <rect x="660" y="0" width="145" height="58" rx="8" fill="#2E1065" stroke="#A855F7" stroke-width="1.5" />
+      <text x="8" y="20" font-family="sans-serif" font-size="11.5" font-weight="700" fill="#E879F9">🏛️ chief-editor</text>
+      <text x="8" y="38" font-family="sans-serif" font-size="10.5" fill="#CBD5E1">加权成绩单 / 终审判决</text>
+      <text x="8" y="50" font-family="sans-serif" font-size="10" fill="#F472B6">退修三刀手术单</text>
+    </g>
+
+    <!-- Arrow Council -> Packaging -->
+    <line x1="840" y1="60" x2="885" y2="60" stroke="#38BDF8" stroke-width="2" marker-end="url(#arrow)" />
+
+    <!-- Stage 6: Packaging -->
+    <g transform="translate(895, 0)">
+      <rect x="0" y="0" width="205" height="120" rx="12" fill="url(#boxGrad1)" stroke="#34D399" stroke-width="1.2" />
+      <circle cx="24" cy="24" r="12" fill="#059669" />
+      <text x="20" y="28" font-family="sans-serif" font-size="11" font-weight="700" fill="#FFFFFF">6</text>
+      <text x="44" y="27" font-family="sans-serif" font-size="13" font-weight="700" fill="#F8FAFC">去味封装 (Release)</text>
+      <text x="12" y="52" font-family="sans-serif" font-size="11" fill="#94A3B8">• 5 组工业爆款标题</text>
+      <text x="12" y="70" font-family="sans-serif" font-size="11" fill="#94A3B8">• 社交媒体多端矩阵</text>
+      <text x="12" y="88" font-family="sans-serif" font-size="11" fill="#94A3B8">• 公众号/X/小红书转译</text>
+      <text x="12" y="106" font-family="monospace" font-size="10.5" fill="#34D399">✓ 交付发布版成稿</text>
+    </g>
+  </g>
+</svg>

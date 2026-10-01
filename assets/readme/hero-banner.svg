@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="100%" height="100%">
+  <title>Writing Boost - Industrial Writing Engineering Framework</title>
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090D16" />
+      <stop offset="50%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#0B1120" />
+    </linearGradient>
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#818CF8" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#C084FC" stop-opacity="0.8" />
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="50%" stop-color="#818CF8" />
+      <stop offset="100%" stop-color="#E879F9" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.9" />
+    </linearGradient>
+    <!-- Grid Pattern -->
+    <pattern id="gridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#334155" stroke-width="1" stroke-opacity="0.2" />
+    </pattern>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1200" height="420" rx="20" fill="url(#bgGrad)" />
+  <rect width="1200" height="420" rx="20" fill="url(#gridPattern)" />
+  <!-- Glowing Border -->
+  <rect x="1.5" y="1.5" width="1197" height="417" rx="19" fill="none" stroke="url(#borderGrad)" stroke-width="2.5" />
+
+  <!-- Left Side: Core Value Proposition & Typography -->
+  <g transform="translate(60, 60)">
+    <!-- Pill Badge -->
+    <rect x="0" y="0" width="230" height="32" rx="16" fill="#1E293B" stroke="#38BDF8" stroke-width="1.2" stroke-opacity="0.6" />
+    <circle cx="16" cy="16" r="5" fill="#38BDF8" />
+    <text x="30" y="21" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#38BDF8" letter-spacing="1.2">SYSTEMIC WRITING V2.2</text>
+
+    <!-- Main Title -->
+    <text x="0" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="54" font-weight="800" fill="#F8FAFC" letter-spacing="-1">
+      writing<tspan fill="url(#textGrad)">-boost</tspan>
+    </text>
+
+    <!-- Subtitle / Tagline -->
+    <text x="0" y="136" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="600" fill="#94A3B8">
+      全系统化工业级写作工程框架与对抗式审查引擎
+    </text>
+
+    <!-- Feature Description Lines -->
+    <text x="0" y="180" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="400" fill="#64748B" letter-spacing="0.3">
+      • 模块化文风解耦 (6-Layer DNA 插件契约 · 拒绝单一风格钉死)
+    </text>
+    <text x="0" y="210" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="400" fill="#64748B" letter-spacing="0.3">
+      • 五位一体对抗审查委员会 (毒舌反驳 · 逻辑事实 · AI味猎手 · 节拍体检 · 主编终审)
+    </text>
+    <text x="0" y="240" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="400" fill="#64748B" letter-spacing="0.3">
+      • 六阶段严苛流水线 · 概念奠基 (Grounding) · 中英双语去 AI 味零幻觉白名单
+    </text>
+
+    <!-- Badges Row -->
+    <g transform="translate(0, 275)">
+      <!-- Badge 1: 5 Pluggable Styles -->
+      <rect x="0" y="0" width="135" height="30" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1" />
+      <text x="12" y="20" font-family="monospace" font-size="12" font-weight="600" fill="#38BDF8">5 模块化风格</text>
+
+      <!-- Badge 2: 5 Review Agents -->
+      <rect x="145" y="0" width="150" height="30" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1" />
+      <text x="157" y="20" font-family="monospace" font-size="12" font-weight="600" fill="#818CF8">5 对抗审查子代理</text>
+
+      <!-- Badge 3: Zero AI Slop -->
+      <rect x="305" y="0" width="135" height="30" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1" />
+      <text x="317" y="20" font-family="monospace" font-size="12" font-weight="600" fill="#34D399">零 AI 腔严苛白名单</text>
+
+      <!-- Badge 4: Test Verified -->
+      <rect x="450" y="0" width="125" height="30" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1" />
+      <text x="462" y="20" font-family="monospace" font-size="12" font-weight="600" fill="#F472B6">100% 单元质检</text>
+    </g>
+  </g>
+
+  <!-- Right Side: Terminal / Code Specimen Showcase Card -->
+  <g transform="translate(730, 48)">
+    <rect width="410" height="324" rx="14" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5" />
+    
+    <!-- Window Controls -->
+    <circle cx="24" cy="22" r="6" fill="#EF4444" />
+    <circle cx="44" cy="22" r="6" fill="#F59E0B" />
+    <circle cx="64" cy="22" r="6" fill="#10B981" />
+    <text x="140" y="26" font-family="monospace" font-size="12" fill="#64748B">writing-boost.console</text>
+    <line x1="0" y1="42" x2="410" y2="42" stroke="#334155" stroke-width="1" />
+
+    <!-- Terminal Code / Output Preview -->
+    <g transform="translate(20, 68)" font-family="monospace" font-size="12.5" fill="#E2E8F0">
+      <text x="0" y="0" fill="#38BDF8">$ /writing-boost write "大厂40岁失业"</text>
+      <text x="0" y="24" fill="#94A3B8">[1/6] 选题反差卡: 身份断裂 vs 存折物象</text>
+      <text x="0" y="48" fill="#94A3B8">[2/6] 加载文风: styles/zhiyin-2026 (L1~L6)</text>
+      <text x="0" y="72" fill="#94A3B8">[3/6] 奠基分场: 宾馆吞药 -&gt; 龙岗老父 -&gt; 破局</text>
+      <text x="0" y="96" fill="#818CF8">&gt;&gt;&gt; 阶段 5: 启动多视角对抗终审委员会</text>
+      
+      <!-- Subagent Findings in Mini Badges -->
+      <g transform="translate(0, 115)">
+        <rect x="0" y="0" width="370" height="98" rx="8" fill="#0B132B" stroke="#1E293B" stroke-width="1" />
+        <text x="12" y="22" fill="#EF4444" font-weight="600">😈 devils-advocate:</text>
+        <text x="170" y="22" fill="#CBD5E1">剔除末尾廉价煽情</text>
+
+        <text x="12" y="44" fill="#F59E0B" font-weight="600">🔍 logic-inquisitor:</text>
+        <text x="170" y="44" fill="#CBD5E1">龙岗高铁时间戳闭环</text>
+
+        <text x="12" y="66" fill="#10B981" font-weight="600">✂️ slop-hunter:</text>
+        <text x="170" y="66" fill="#CBD5E1">清理 2 处"不是...而是..."</text>
+
+        <text x="12" y="88" fill="#A855F7" font-weight="600">🏛️ chief-editor:</text>
+        <text x="170" y="88" fill="#38BDF8" font-weight="700">VERDICT: PASS (54/60)</text>
+      </g>
+
+      <text x="0" y="238" fill="#34D399" font-weight="600">✓ 正文生成完毕 · 5 组工业标题就绪</text>
+    </g>
+  </g>
+</svg>

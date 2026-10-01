@@ -13,9 +13,11 @@
 - **frozen_constraints**：
 - **frozen_content**：
 - **issue_set**：
-  - BLOCKER：
-  - MAJOR：
-  - MINOR：
+  - BLOCKER（Issue IDs）：
+  - MAJOR（Issue IDs）：
+  - MINOR（Issue IDs）：
+- **closed_issue_ids**：
+- **reopened_issue_ids**：仅允许 regression / new evidence
 - **changes_made**：
 - **regressions**：
 - **length_before / after**：

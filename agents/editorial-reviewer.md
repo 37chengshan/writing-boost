@@ -22,17 +22,22 @@
 
 ## 输出
 
+severity 与 Issue ID 规则读取 [../references/quality-gates.md](../references/quality-gates.md)。Round 1 使用 `ER-001` 起连续编号；Round 2 复核时沿用原 ID，不把同一审美问题换个说法重新报出。
+
 ```markdown
 ## Editorial Review
 
 ### BLOCKER
-- [位置] 问题 — 为什么影响目标读者 — 建议方向
+- [ER-001] [位置] 问题 — 为什么影响目标读者 — 建议方向 — status: OPEN
 
 ### MAJOR
-- ...
+- [ER-002] ...
 
 ### MINOR
-- ...
+- [ER-003] ...
+
+### RECHECK
+- [ER-001] FIXED / REGRESSED / STILL_OPEN — 复核说明
 
 ### KEEP
 - 明确建议保留的有效写法

@@ -31,13 +31,7 @@
 
 ### 2 reviewers
 
-同时派两路用于：
-
-- **达到 runtime contract 当前 `count_mode` 的非虚构长篇阈值时，纪实特稿、调查、人物报道最终交付强制双审**；当前默认中文 `zh_units >= 3000`，英文 `words >= 1800`。
-- 其他重要长稿最终交付；
-- 用户明确要求“深度审查 / 交叉审核”；
-- 同时存在事实风险与明显编辑风险；
-- 第一轮主会话发现问题跨越两个关注面。
+双审触发统一读取 [quality-gates.md](quality-gates.md)；数值与 flags 只从 [`../runtime-contract.json`](../runtime-contract.json) 读取。典型触发包括长篇非虚构、高事实成本领域、时间线 / 引语 / 数字密集、跨两个关注面的 MAJOR，以及用户明确要求深度交叉审核。
 
 **硬上限：2。** reviewer 不能再派子代理。强制双审指“两个正交 reviewer”，不是恢复五人委员会。
 
@@ -58,7 +52,7 @@
 
 ## 4. 合并规则
 
-主会话按以下顺序合并：
+severity 与 Issue ID 语义读取 [quality-gates.md](quality-gates.md)。主会话按以下顺序合并：
 
 1. `BLOCKER`：事实越界、信息新增、用户契约违反、严重连续性错误。
 2. `MAJOR`：明显影响理解、可信度、目标读者体验或风格一致性的问题。
@@ -74,8 +68,8 @@
 
 review 阶段遵循 [loop-policy.md](loop-policy.md)（review → 主会话修订 → re-review）。默认 review loop 数读取 [`../runtime-contract.json`](../runtime-contract.json)；用户可用 `--loops N` 或 `--review-loops N` 覆盖。
 
-- Round 1：全量查 BLOCKER / MAJOR / MINOR，主会话修订。
-- Round 2：重点复核上一轮修复和回归，不重新无差别发散新审美意见。
+- Round 1：全量查 BLOCKER / MAJOR / MINOR，给每个 finding 分配稳定 Issue ID，主会话修订。
+- Round 2：按原 Issue ID 重点复核上一轮修复和回归；新 BLOCKER / MAJOR 可新增，新 MINOR 默认不再开 issue，不重新无差别发散审美意见。
 - 用户指定更多轮时，每轮仍最多两个 reviewer；不得通过增加 agent 数量代替循环。
 - 用户在任何轮提出新意见时，把意见作为 `user_delta`，只回退到最早受影响阶段。
 

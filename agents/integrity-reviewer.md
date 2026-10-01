@@ -26,17 +26,22 @@
 
 ## 输出
 
+severity 与 Issue ID 规则读取 [../references/quality-gates.md](../references/quality-gates.md)。Round 1 使用 `IR-001` 起连续编号；Round 2 复核时沿用原 ID，不因换措辞生成新 issue。
+
 ```markdown
 ## Integrity Review
 
 ### BLOCKER
-- [位置] 问题 — 证据 / 冲突 — 建议处理
+- [IR-001] [位置] 问题 — 证据 / 冲突 — 建议处理 — status: OPEN
 
 ### MAJOR
-- ...
+- [IR-002] ...
 
 ### MINOR
-- ...
+- [IR-003] ...
+
+### RECHECK
+- [IR-001] FIXED / REGRESSED / STILL_OPEN — 复核证据
 
 ### VERIFIED / OK
 - 已核验且未发现问题的关键约束

@@ -1,8 +1,7 @@
 {
-  "schema_version": 1,
-  "writing_boost_version": "3.2.0",
+  "schema_version": 2,
+  "writing_boost_version": "3.3.0",
   "defaults": {
-    "loops": 2,
     "loops_by_stage": {
       "shape": 2,
       "draft": 2,
@@ -14,6 +13,12 @@
     "structure_budget_tolerance_ratio": 0.03,
     "cumulative_budget_drift_ratio": 0.1
   },
+  "loops": {
+    "fixed_issue_reopens_only_on_regression": true,
+    "round_2_focus": "verify_fixes_and_regressions",
+    "new_minor_after_round_1": false,
+    "stop_if_no_hard_metric_improves": true
+  },
   "review": {
     "reviewers": [
       "integrity-reviewer",
@@ -24,7 +29,22 @@
       "words": 1800,
       "visible_chars": 3500
     },
+    "strong_trigger_flags": [
+      "high_stakes_fact_domain",
+      "timeline_dense",
+      "quote_or_number_dense",
+      "cross_domain_major_issues",
+      "user_requests_deep_cross_review"
+    ],
+    "timeline_distinct_years_threshold": 3,
+    "high_stakes_fact_domains": [
+      "medical",
+      "legal",
+      "financial",
+      "technical_safety"
+    ],
     "long_nonfiction_requires_both_reviewers": true,
+    "strong_trigger_requires_both_reviewers": true,
     "main_session_is_synthesizer": true
   },
   "length": {

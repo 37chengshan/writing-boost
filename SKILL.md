@@ -2,7 +2,7 @@
 name: writing-boost
 description: 对齐优先的系统化写作工程框架。先锁定目标、读者、事实边界、风格、交付物与字数，再进入素材、结构、写作、去 AI 味和终审；终审阶段最多调用两个交叉 reviewer，主会话负责最终裁决。用于特稿、调查、真实故事、回忆录、科技商业长文、文旅与其他长文写作。
 metadata:
-  version: 3.2.0
+  version: 3.3.0
   author: Writing Lab System
   pillars:
     - alignment-first
@@ -17,7 +17,7 @@ metadata:
 
 # writing-boost
 
-把写作当成一个有明确输入、约束、循环预算和验收标准的工程流程。**先与用户对齐，再写；先锁字数，再拆结构；关键阶段默认双循环；子代理只用于终审，最多两个。**
+把写作当成一个有明确输入、约束、循环预算和验收标准的工程流程。**先与用户对齐，再写；先锁字数，再拆结构；结构/正文/终审按 runtime contract 默认双循环；子代理只用于终审，最多两个。**
 
 ## 0. 总原则
 
@@ -140,7 +140,7 @@ Explore 属于可选前置探索，不计入六阶段，因此不再出现“阶
 - [agents/integrity-reviewer.md](agents/integrity-reviewer.md)
 - [agents/editorial-reviewer.md](agents/editorial-reviewer.md)
 
-按风险选择 0 / 1 / 2 个。**任何时候都不得超过 2 个，也不得再派 chief-editor 子代理。** 重要非虚构长稿是否强制双审，按 `runtime-contract.json` 中当前计数口径的阈值判断（默认中文 `zh_units >= 3000`、英文 `words >= 1800`）；达到阈值时最终交付前强制启用 Integrity + Editorial。review 循环次数同样服从 runtime contract 或用户覆盖。
+按风险选择 0 / 1 / 2 个。**任何时候都不得超过 2 个，也不得再派 chief-editor 子代理。** 是否强制双审同时参考 `runtime-contract.json` 的长篇阈值与 strong-trigger flags，并按 [references/quality-gates.md](references/quality-gates.md) 解释；因此短稿在医疗 / 法律 / 财务 / 技术安全、密集时间线或用户明确要求深度交叉审核时也可强制 Integrity + Editorial。review 循环次数同样服从 runtime contract 或用户覆盖。
 
 如果宿主支持给 reviewer 选择不同模型，并且本次需要双路交叉审核：
 
@@ -163,7 +163,7 @@ Explore 属于可选前置探索，不计入六阶段，因此不再出现“阶
 
 ## 8. 最终验收
 
-交付前必须全部满足：
+Hard / Soft Gate 与 severity 统一读取 [references/quality-gates.md](references/quality-gates.md)。交付前必须全部满足：
 
 - 对齐卡没有被悄悄改写；
 - 实际字数落在锁定验收区间；

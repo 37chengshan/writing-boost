@@ -36,7 +36,7 @@ Feedback Loop 不消耗已经结束的 Automatic Loop 预算。用户继续给�
 
 ## 2. 参数覆盖
 
-默认循环预算读取 runtime contract。目前核心阶段默认 `loops = 2`（Shape=2、Draft=2、Review=2、Packaging=0）。
+默认循环预算只读取 runtime contract 的 `loops_by_stage`：Shape=2、Draft=2、Review=2、Packaging=0。不存在第二套“全局默认值”；`--loops N` 只是用户显式覆盖。
 
 用户可以：
 
@@ -114,8 +114,11 @@ review findings
 → regression re-review
 ```
 
-Round 1 可以全量找问题。
-Round 2 及以后首先验证旧问题是否关闭、是否产生回归；只有新出现的 BLOCKER / MAJOR 才进入 issue set。
+Round 1 可以全量找问题，并给 issue 分配稳定 ID。
+Round 2 及以后首先验证旧问题是否关闭、是否产生回归；沿用原 Issue ID。只有新出现的 BLOCKER / MAJOR 才进入 issue set；新 MINOR 默认不再开 issue，除非用户明确要求精修。
+已 FIXED issue 只有发生 regression 或出现新证据时才能 reopen。
+
+这些收敛行为以 runtime contract 的 `loops` 字段为机器真源，severity / Issue ID 语义读取 [quality-gates.md](quality-gates.md)。
 
 增加 loop 数量**不能增加 reviewer 数量**。
 
@@ -192,6 +195,7 @@ Automatic Loop 满足任一条件即可提前停止：
 
 - Gate 已通过且 BLOCKER / MAJOR = 0；
 - 本轮没有新的实质修改；
+- 连续一轮没有任何硬指标改善（OPEN BLOCKER / MAJOR 未下降，也没有关闭回归）；
 - 剩余分歧只能由用户审美决定；
 - 继续改会破坏 frozen set、事实守恒或字数锁；
 - 已达到该阶段 loop budget。

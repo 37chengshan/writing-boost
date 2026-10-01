@@ -70,7 +70,16 @@ default_length:
 - 对来源与证据的要求；
 - 场景、人物动作、物象与感官细节的偏好；
 - 是否需要最低物象数量，如需要由该 style 自己给数值；
-- 对虚构、合成、推断的允许范围。
+- 创作类任务的虚构 / 合成边界。**非虚构 style 只能在 `nonfiction-fidelity` 基础上收紧，不得放宽 `source_policy / reconstruction_policy / Claim Strength`。**
+
+### Nonfiction Boundary
+
+Style 是审美与组织层，不是事实豁免层。对纪实、调查、回忆录等事实性文本：
+
+- style 可以要求更多来源、更少重构、更严格的原话保真；
+- style 不得允许核心协议禁止的脑补；
+- style 不得把 `ATTRIBUTED / INFERRED` 主张提升为无归属的确定事实；
+- style 不得用“临场感”“电影感”“文学性”作为新增现场事实的理由。
 
 ## 7. L5 Stance
 

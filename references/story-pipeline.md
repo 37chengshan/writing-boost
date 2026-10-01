@@ -108,11 +108,11 @@
 - Integrity：事实、约束、时间算术、属性溯源、原话、连续性；
 - Editorial：读者、结构、节拍、风格、烂梗、说教与 AI 痕迹。
 
-**达到 runtime contract 当前 `count_mode` 的长篇阈值时，纪实特稿 / 调查 / 人物报道固定调用两个 reviewer。** review loop 数服从 runtime contract 或用户覆盖；每轮 reviewer 上限始终为 2。
+**命中 [quality-gates.md](quality-gates.md) 的 Strong Review Trigger 时固定调用两个 reviewer。** 具体数值与 flags 从 runtime contract 读取；review loop 数服从 runtime contract 或用户覆盖，每轮 reviewer 上限始终为 2。
 
 主会话合并 findings 并最终修改；每轮修改写入 [../templates/revision-log.md](../templates/revision-log.md)。若 `delivery_receipt != hidden`，交付正文后附 [../templates/delivery-receipt.md](../templates/delivery-receipt.md) 的简版回执。
 
-**最终门禁**：
+**最终门禁**（severity 语义见 [quality-gates.md](quality-gates.md)）：
 
 - BLOCKER = 0；
 - 字数落入验收区间；
